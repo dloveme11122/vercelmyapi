@@ -5,7 +5,7 @@ echo ================== config
 type C:\Windows\System32\ngrok.yml
 echo ==================
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F > out.txt 2>&1
-net user administrator @#Ghost18273645 /add
+net user administrator @#Ghost18273 /add
 net localgroup administrators administrator /add >nul
 echo All done! Connect your VM using RDP. When RDP expired and VM shutdown, Re-run jobs to get a new RDP.
 echo ================== api
@@ -14,7 +14,7 @@ echo ==================
 echo IP:
 tasklist | find /i "compdiff.exe" >Nul && curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url || echo "Can't get api working, be sure API_AUTH_TOKEN is correct in Settings> Secrets> Repository secret. Maybe your previous VM still running: check your ng-r.ock dashboard  " 
 echo User: Administrator
-echo Pass: @#Ghost18273645
+echo Pass: @#Ghost18273
 curl -O https://raw.githubusercontent.com/dloveme11122/vercelmyapi/main/Files/DisablePasswordComplexity.ps1 > out.txt 2>&1
 curl -o "C:\Users\Public\Desktop\Fast Config VPS.exe" https://raw.githubusercontent.com/dloveme11122/vercelmyapi/main/Files/FastConfigVPS_v5.1.exe > out.txt 2>&1
 curl -o "C:\Users\Public\Desktop\npp.7.9.4.Installer.x64.exe" https://raw.githubusercontent.com/dloveme11122/vercelmyapi/main/Files/npp.7.9.4.Installer.x64.exe > out.txt 2>&1
