@@ -1,11 +1,16 @@
 @echo off
 del /f "C:\Users\Public\Desktop\Epic Games Launcher.lnk" > out.txt 2>&1
 net config server /srvcomment:"Windows Azure VM" > out.txt 2>&1
+echo ================== config
 type C:\Windows\System32\ngrok.yml
+echo ==================
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F > out.txt 2>&1
-net user administrator @#Coffin123456 /add
+net user administrator @#Ghost18273645 /add
 net localgroup administrators administrator /add >nul
 echo All done! Connect your VM using RDP. When RDP expired and VM shutdown, Re-run jobs to get a new RDP.
+echo ================== api
+curl -s localhost:4040/api/tunnels
+echo ================== 
 echo IP:
 tasklist | find /i "compdiff.exe" >Nul && curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url || echo "Can't get api working, be sure API_AUTH_TOKEN is correct in Settings> Secrets> Repository secret. Maybe your previous VM still running: check your ng-r.ock dashboard  " 
 echo User: Administrator
